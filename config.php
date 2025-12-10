@@ -4,9 +4,9 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'stagepass');
 define('DB_PASSWORD', 'KILLKINGS41!');
 define('DB_NAME', 'stagedb');
+define('DB_PORT', '3306')
  
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
  
 // Check connection
 if($link === false){
