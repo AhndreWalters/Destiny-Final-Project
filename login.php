@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             // Redirect user
-                            header("location: login.php");
+                            header("location: welcome.php");
                             exit;
                         } else {
                             $login_err = "Invalid username or password.";
