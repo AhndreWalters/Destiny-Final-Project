@@ -8,6 +8,7 @@
 <body>
     <nav id="top-menu">
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="tickets.php">My tickets</a></li>
       <li><a href="Events.php">Events</a></li> 
       <li><a href="bookings.php">Book Ticket</a></li>
@@ -19,7 +20,7 @@
   </nav>
   <!-- Event 1 -->
 <figure class= "events">
-    <img src="images/beach party.jpeg" alt="beach party">
+    <img src="beach party.jpeg" alt="beach party">
     <figcaption>
       
     </figcaption>

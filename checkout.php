@@ -19,11 +19,6 @@ $total = array_sum(array_map(fn($i)=>$i["price"]*$i["quantity"], $cart));
   <meta charset="UTF-8">
   <title>Checkout</title>
   <link rel="stylesheet" href="index.css">
-  <style>
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
-    button { padding: 8px 12px; margin-top: 20px; }
-  </style>
 </head>
 <body>
   <h2>Checkout</h2>
