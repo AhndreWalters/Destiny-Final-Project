@@ -1,0 +1,50 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/index.css">
+  <title>Stage Pass</title>
+</head>
+<header></header>
+<body>
+    <nav id="top-menu">
+    <ul>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="tickets.php">My tickets</a></li>
+      <li><a href="events.php">Events</a></li>
+      <li><a href="bookings.php">Book Ticket</a></li>
+      <li><a href="cart.php">Cart</a></li>
+      <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="account.php">Account</a></li>
+      <li>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <!-- If logged in -->
+          <button onclick="window.location.href='logout.php'">LOGOUT</button>
+        <?php else: ?>
+          <!-- If not logged in -->
+          <button onclick="window.location.href='login.php'">LOGIN</button>
+        <?php endif; ?>
+      </li>
+    </ul>
+  </nav>
+
+  <h1 id="name">STAGE PASS</h1>
+  <p class="phrase">Exclusive access to the shows you love</p>
+  <p class="phrase">Discover concerts, sports, theater, and community events near you. 
+      Book tickets easily and securely.</p>
+
+  <button id="reg">Register Now</button>
+
+  <script>
+    document.getElementById("reg").addEventListener("click", function() {
+      window.location.href = "register.php";
+    });
+  </script>
+</body>
+
+<footer>© 2025 StagePass | <a href="contact.php">Contact Us</a> | Privacy Policy</footer>
+</html>

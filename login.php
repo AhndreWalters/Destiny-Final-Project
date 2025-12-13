@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
                             // Redirect user
-                            header("location: welcome.php");
+                            header("location: tickets.php");
                             exit;
                         } else {
                             $login_err = "Invalid username or password.";
@@ -81,21 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/login.css">
     <title>Login</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; }
-        .wrapper { width: 350px; padding: 20px; background: white; margin: 50px auto; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h2 { text-align: center; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; }
-        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 3px; }
-        .btn { background: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer; width: 100%; }
-        .btn:hover { background: #0056b3; }
-        .alert { padding: 10px; margin-bottom: 15px; border-radius: 3px; }
-        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .invalid-feedback { color: #dc3545; font-size: 14px; }
-        .is-invalid { border-color: #dc3545; }
-    </style>
 </head>
 <body>
     <div class="wrapper">

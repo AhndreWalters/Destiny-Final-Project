@@ -17,12 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($name) && !empty($email)) {
         if (!empty($user_password)) {
-            // Update with new password
             $hashedPassword = password_hash($user_password, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("UPDATE Users SET name=?, email=?, password=? WHERE id=?");
             $stmt->bind_param("sssi", $name, $email, $hashedPassword, $userId);
         } else {
-            // Update without changing password
             $stmt = $conn->prepare("UPDATE Users SET name=?, email=? WHERE id=?");
             $stmt->bind_param("ssi", $name, $email, $userId);
         }
@@ -47,19 +45,29 @@ $stmt->close();
 <head>
   <meta charset="UTF-8">
   <title>StagePass - My Account</title>
-  <link rel="stylesheet" href="index.css">
-  <style>
-    body { font-family: Arial, sans-serif; background: #111; color: #fff; }
-    .container { max-width: 500px; margin: 40px auto; background: #222; padding: 20px; border-radius: 8px; }
-    label { display: block; margin-top: 10px; }
-    input { width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: none; }
-    button { margin-top: 15px; padding: 10px 15px; background: #ff0080; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #7928ca; }
-    .success { color: #0f0; margin-top: 10px; }
-    .error { color: #f00; margin-top: 10px; }
-  </style>
+  <link rel="stylesheet" href="styles/account.css">
+  
 </head>
 <body>
+  <nav id="top-menu">
+    <ul>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="tickets.php">My tickets</a></li>
+      <li><a href="events.php">Events</a></li> 
+      <li><a href="bookings.php">Book Ticket</a></li>
+      <li><a href="cart.php">Cart</a></li>
+      <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="account.php">Account</a></li>
+      <li>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <button onclick="window.location.href='logout.php'">LOGOUT</button>
+        <?php else: ?>
+          <button onclick="window.location.href='login.php'">LOGIN</button>
+        <?php endif; ?>
+      </li>
+    </ul>
+  </nav>
+
   <div class="container">
     <h2>My Account</h2>
 
@@ -82,5 +90,7 @@ $stmt->close();
       <button type="submit">Update Account</button>
     </form>
   </div>
+
+  <footer>© 2025 StagePass | <a href="contact.php">Contact Us</a> | Privacy Policy</footer>
 </body>
 </html>

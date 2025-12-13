@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = trim($_POST["message"]);
 
     if (!empty($name) && !empty($email) && !empty($message)) {
-        // Insert into database (optional)
         $stmt = $conn->prepare("INSERT INTO ContactMessages (name, email, message, created_at) VALUES (?, ?, ?, NOW())");
         $stmt->bind_param("sss", $name, $email, $message);
         $stmt->execute();
@@ -26,32 +25,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <title>StagePass - Contact Us</title>
-  <link rel="stylesheet" href="index.css">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #111; color: #fff; }
-    header { background: linear-gradient(90deg, #ff0080, #7928ca); padding: 20px; text-align: center; }
-    header h1 { margin: 0; }
-    .container { max-width: 600px; margin: 40px auto; background: #222; padding: 20px; border-radius: 8px; }
-    label { display: block; margin-top: 10px; }
-    input, textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: none; }
-    button { margin-top: 15px; padding: 10px 15px; background: #ff0080; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #7928ca; }
-    .success { color: #0f0; margin-top: 10px; }
-    .error { color: #f00; margin-top: 10px; }
-  </style>
+  <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
     <nav id="top-menu">
-    <ul>
-      <li><a href="tickets.php">My tickets</a></li>
-      <li><a href="Events.php">Events</a></li> 
-      <li><a href="bookings.php">Book Ticket</a></li>
-      <li><a href="Cart.php">Cart</a></li>
-      <li><a href="contact.php">Contact Us</a></li>
-      <li><a href="account.php"> Account </a></li>
-     <button onclick="window.location.href= 'login.php'"> LOGIN</button>
-    </ul>
-  </nav>
+      <ul>
+        <li><a href="tickets.php">My tickets</a></li>
+        <li><a href="events.php">Events</a></li> 
+        <li><a href="bookings.php">Book Ticket</a></li>
+        <li><a href="cart.php">Cart</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="account.php">Account</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <button onclick="window.location.href='logout.php'">LOGOUT</button>
+          <?php else: ?>
+            <button onclick="window.location.href='login.php'">LOGIN</button>
+          <?php endif; ?>
+        </li>
+      </ul>
+    </nav>
 
   <header>
     <h1>Contact Us</h1>
@@ -79,5 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <button type="submit">Send Message</button>
     </form>
   </div>
+  <footer>© 2025 StagePass | <a href="contact.php">Contact Us</a> | Privacy Policy</footer>
 </body>
 </html>
